@@ -1,0 +1,149 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""Tag TabObject"""
+type TagObject {
+  """Tag ID"""
+  id: Int!
+
+  """Tag Name"""
+  name: String!
+
+  """Tag Posts"""
+  posts: [PostObject!]
+}
+
+"""Post TabObject"""
+type PostObject {
+  """Post ID"""
+  id: Int!
+
+  """Post Title"""
+  title: String!
+
+  """Post Content"""
+  content: String!
+
+  """Post Author"""
+  user: UserObject!
+
+  """Post Comments"""
+  comments: [CommentObject!]
+
+  """Post Tags"""
+  tags: [TagObject!]
+}
+
+type CommentObject {
+  """Comment ID"""
+  id: Int!
+
+  """Comment Content"""
+  content: String!
+
+  """Comment Author"""
+  user: UserObject!
+
+  """Comment Post"""
+  post: PostObject!
+}
+
+"""User TabObject"""
+type UserObject {
+  """User ID"""
+  id: Int!
+
+  """User Username"""
+  username: String!
+
+  """User Email"""
+  email: String!
+
+  """User Role"""
+  role: String!
+
+  """User Posts"""
+  posts: [PostObject!]
+
+  """User Comments"""
+  comments: [CommentObject!]
+}
+
+type Query {
+  user(id: Int!): UserObject!
+  post(id: Int!): PostObject!
+  tag(id: Int!): TagObject!
+  comment(id: Int!): CommentObject!
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): UserObject!
+  updateUser(updateUserInput: UpdateUserInput!): UserObject!
+  removeUser(id: Int!): UserObject!
+  createPost(createPostInput: CreatePostInput!): PostObject!
+  updatePost(updatePostInput: UpdatePostInput!): PostObject!
+  removePost(id: Int!): PostObject!
+  createTag(createTagInput: CreateTagInput!): TagObject!
+  updateTag(updateTagInput: UpdateTagInput!): TagObject!
+  removeTag(id: Int!): TagObject!
+  createComment(createCommentInput: CreateCommentInput!): CommentObject!
+  updateComment(updateCommentInput: UpdateCommentInput!): CommentObject!
+  removeComment(id: Int!): CommentObject!
+}
+
+input CreateUserInput {
+  """User Username"""
+  username: String!
+
+  """User Email"""
+  email: String!
+
+  """User Role"""
+  role: String! = "user"
+}
+
+input UpdateUserInput {
+  """User Username"""
+  username: String
+
+  """User Email"""
+  email: String
+
+  """User Role"""
+  role: String = "user"
+  id: Int!
+}
+
+input CreatePostInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdatePostInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateTagInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateTagInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateCommentInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateCommentInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
